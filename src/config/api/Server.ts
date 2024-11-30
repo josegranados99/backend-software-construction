@@ -4,6 +4,7 @@ import express from "express";
 import dotenv from "dotenv";
 import userRouteAPI from "../../app/login/route/UserRoute";
 import loginRouteAPI from "../../app/login/route/LoginRoute";
+import ptRouteAPI from "../../app/product_type/route/ProductTypeRoute";
 
 dotenv.config({
     path: ".env",
@@ -34,7 +35,8 @@ class Server {
     public loadRoute():void {
         this.app.use("/v1/api/user", userRouteAPI);
         this.app.use("/v1/api/", loginRouteAPI);
-        //this.app.use("/v1/api/login", login);
+
+        this.app.use("/v1/api/product-type", ptRouteAPI);
     };
 
     public start():void {
