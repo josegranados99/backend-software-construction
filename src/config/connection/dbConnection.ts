@@ -1,31 +1,22 @@
-import dotenv from "dotenv";
 import pgPromise from "pg-promise";
 import { optionsPG } from "./optionsPG";
-
-dotenv.config({
-  path: ".env",
-});
-
-const host: string = String(process.env.HOST);
-const port: number = Number(process.env.PORT);
-const db: string = String(process.env.DB);
-const dbUser: string = String(process.env.DB_USER);
-const dbUserPassword: string = String(process.env.DB_USER_PASSWORD);
+import { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_USER_PASSWORD } from "../../helpers/constantsHelpers";
 
 const pgp = pgPromise(optionsPG);
+console.log(`DB PASS. ${DB_NAME}`);
 
 const pool = pgp({
-  user: dbUser,
-  host: host,
-  password: dbUserPassword,
-  database: db,
-  port: port,
+  user: DB_USER,
+  host: DB_HOST,
+  password: DB_USER_PASSWORD,
+  database: DB_NAME,
+  port: DB_PORT,
 });
 
 pool
   .connect()
   .then((connection)=>{
-    console.log(`Connected to the database ${db}`);
+    console.log(`Connected to the database ${DB_NAME}`);
     connection.done();
   })
   .catch((error) => {

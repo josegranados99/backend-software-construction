@@ -1,16 +1,14 @@
 import { query, Response } from "express";
 import encode from "bcryptjs";
 import jwt, {Secret} from "jsonwebtoken";
-import dotenv from "dotenv";
 import Token from "../entity/Token";
 import Access from "../entity/Access";
 import { SQL_Access } from "../repository/sql_access";
 import pool from "../../../config/connection/dbConnection";
 import { SQL_User } from "../repository/sql_register";
+import { SECRET_KEY } from "../../../helpers/constantsHelpers";
 
-dotenv.config();
 
-const SECRET_KEY: Secret = String(process.env.SECRET_KEY);
 
 class DaoLogin {
   protected static async newLogin(accessObject: Access, res: Response): Promise<any> {
