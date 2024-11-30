@@ -3,7 +3,6 @@ import { optionsPG } from "./optionsPG";
 import { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_USER_PASSWORD } from "../../helpers/constantsHelpers";
 
 const pgp = pgPromise(optionsPG);
-console.log(`DB PASS. ${DB_NAME}`);
 
 const pool = pgp({
   user: DB_USER,

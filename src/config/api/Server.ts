@@ -4,6 +4,7 @@ import express from "express";
 import userRouteAPI from "../../app/login/route/UserRoute";
 import loginRouteAPI from "../../app/login/route/LoginRoute";
 import ptRouteAPI from "../../app/product_type/route/ProductTypeRoute";
+import productRouteAPI from "../../app/prodcut/route/ProductRoute";
 import security from "../../middlewares/Security";
 import { PORT_BACKEND } from "../../helpers/constantsHelpers";
 
@@ -31,6 +32,7 @@ class Server {
     this.app.use("/v1/api/user", userRouteAPI);
 
     this.app.use("/v1/api/product-type", security.checkToken, ptRouteAPI);
+    this.app.use("/v1/api/product", security.checkToken, productRouteAPI);
   }
 
   public start(): void {

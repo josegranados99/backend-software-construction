@@ -11,5 +11,5 @@ export const DB_USER: string = String(process.env.DB_USER);
 export const DB_USER_PASSWORD: string = String(process.env.DB_USER_PASSWORD);
 
 //BACKEND
-export const PORT_BACKEND: string = String(process.env.PORT_BACKEND);
+export const PORT_BACKEND: number = Number(process.env.PORT_BACKEND);
 export const SECRET_KEY: Secret = String(process.env.SECRET_KEY);
