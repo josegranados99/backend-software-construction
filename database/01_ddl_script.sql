@@ -1,5 +1,3 @@
-PARTE 1------------------------------------------------------
-TABLA ACCESO
 create table access(
 	user_code int4 not null, 
 	access_email varchar(150) not null,
@@ -10,7 +8,6 @@ create table access(
 ALTER table access owner to user_espe;
 create unique index index_email on access (access_email);
 
-TABLA INGRESOS
 create table entry(
 	entry_code serial not null, 
 	user_code int4 not null, 
@@ -20,7 +17,6 @@ create table entry(
 );
 ALTER table entry owner to user_espe;
 
-TABLA PRODUCTOS
 create table product(
 	product_code serial not null, 
 	product_type_code int4 not null,
@@ -30,7 +26,6 @@ create table product(
 );
 ALTER table product owner to user_espe;
 
-TABLA TIPOS DE PRODUCTOS
 create table product_type(
 	product_type_code serial not null, 
 	product_type_name varchar(150) not null,
@@ -38,7 +33,6 @@ create table product_type(
 );
 ALTER table product_type owner to user_espe;
 
-TABLA DE USUARIOS
 create table users(
 	user_code serial not null, 
 	user_name varchar(150) not null,
@@ -46,9 +40,6 @@ create table users(
 	constrAINT pk_users primary key(user_code)
 );
 ALTER table users owner to user_espe;
-PARTE 1------------------------------------------------------
-
-PARTE 2------------------------------------------------------
 alter table access
 	add constraint fk_access_ref_users foreign key(user_code)
 	references users(user_code)
@@ -63,4 +54,3 @@ alter table product
 	add constraint fk_product_ref_product_type foreign key(product_type_code)
 	references product_type(product_type_code)
 	on delete restrict on update cascade;
-PARTE 2------------------------------------------------------
