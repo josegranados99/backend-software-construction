@@ -1,11 +1,16 @@
 import { query, Response } from "express";
 import encode from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt, {Secret} from "jsonwebtoken";
+import dotenv from "dotenv";
 import Token from "../entity/Token";
 import Access from "../entity/Access";
 import { SQL_Access } from "../repository/sql_access";
 import pool from "../../../config/connection/dbConnection";
 import { SQL_User } from "../repository/sql_register";
+
+dotenv.config();
+
+const SECRET_KEY: Secret = String(process.env.SECRET_KEY);
 
 class DaoLogin {
   protected static async newLogin(accessObject: Access, res: Response): Promise<any> {
@@ -43,11 +48,11 @@ class DaoLogin {
         switch (action) {
           case 1:
             res.status(403).json({
-              "response": "Incorrect email or password"
-            })
+              response: "Incorrect email or password",
+            });
             break;
           case 2:
-            const createToken = jwt.sign(token, "password secret", {expiresIn: "8h"});
+            const createToken = jwt.sign(token, SECRET_KEY, { expiresIn: "8h" });
             res.status(200).json(createToken);
             break;
           default:

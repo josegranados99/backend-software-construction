@@ -1,11 +1,16 @@
 import encode from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt, {Secret} from "jsonwebtoken";
 import { Response } from "express";
+import dotenv from "dotenv";
 import Access from "../entity/Access";
 import Token from "../entity/Token";
 import pool from "../../../config/connection/dbConnection";
 import { SQL_User } from "../repository/sql_register";
 import { SQL_Access } from "../repository/sql_access";
+
+dotenv.config();
+
+const SECRET_KEY: Secret = String(process.env.SECRET_KEY);
 
 class DaoUserRegister {
   protected static async newRegister(accessObjct: Access, res: Response): Promise<any> {
@@ -42,7 +47,7 @@ class DaoUserRegister {
             });            
             break;
           case 2:
-            const createToken = jwt.sign(token, "password secret", {expiresIn: "8h"});
+            const createToken = jwt.sign(token, SECRET_KEY, {expiresIn: "8h"});
             res.status(200).json(createToken);
             break;
           default:
