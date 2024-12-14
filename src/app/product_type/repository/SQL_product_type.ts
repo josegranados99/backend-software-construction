@@ -10,5 +10,5 @@ export const SQL_product_type = {
     (SELECT COUNT(product_type_code) FROM product \
     WHERE product_type_code = pt.product_type_code ) as amount_product \
     FROM product_type as pt \
-    ORDER BY pt.product_type_code desc",
+    ORDER BY pt.product_type_code asc",
 };

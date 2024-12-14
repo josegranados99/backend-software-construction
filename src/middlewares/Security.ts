@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
-import { SECRET_KEY } from "../helpers/constantsHelpers";
+import { SECRET_KEY } from "../helpers/constants/config";
 
 class Security {
   public checkToken(req: Request, res: Response, next: NextFunction): void {

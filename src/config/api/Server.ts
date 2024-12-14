@@ -6,7 +6,7 @@ import loginRouteAPI from "../../app/login/route/LoginRoute";
 import ptRouteAPI from "../../app/product_type/route/ProductTypeRoute";
 import productRouteAPI from "../../app/prodcut/route/ProductRoute";
 import security from "../../middlewares/Security";
-import { PORT_BACKEND } from "../../helpers/constantsHelpers";
+import { PORT_BACKEND } from "../../helpers/constants/config";
 
 class Server {
   public app: express.Application;

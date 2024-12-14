@@ -1,6 +1,6 @@
 import pgPromise from "pg-promise";
 import { optionsPG } from "./optionsPG";
-import { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_USER_PASSWORD } from "../../helpers/constantsHelpers";
+import { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_USER_PASSWORD } from "../../helpers/constants/config";
 
 const pgp = pgPromise(optionsPG);
 

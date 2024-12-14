@@ -6,7 +6,7 @@ import Access from "../entity/Access";
 import { SQL_Access } from "../repository/sql_access";
 import pool from "../../../config/connection/dbConnection";
 import { SQL_User } from "../repository/sql_register";
-import { SECRET_KEY } from "../../../helpers/constantsHelpers";
+import { SECRET_KEY } from "../../../helpers/constants/config";
 
 
 

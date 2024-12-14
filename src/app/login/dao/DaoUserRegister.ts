@@ -6,7 +6,7 @@ import Token from "../entity/Token";
 import pool from "../../../config/connection/dbConnection";
 import { SQL_User } from "../repository/sql_register";
 import { SQL_Access } from "../repository/sql_access";
-import { SECRET_KEY } from "../../../helpers/constantsHelpers";
+import { SECRET_KEY } from "../../../helpers/constants/config";
 class DaoUserRegister {
   protected static async newRegister(accessObjct: Access, res: Response): Promise<any> {
     await pool
